@@ -8,7 +8,8 @@ bank_operations = [
 ]
 
 
-def filter_by_state(bank_info: List[Dict], state: Tuple[str,...] =("EXECUTED",)) -> List[Dict]:
+def filter_by_state(
+    bank_info: List[Dict], state: Tuple[str, ...] = ("EXECUTED",)) -> List[Dict]:
     """Функция обрабатывающая список словарей с данными о банковских операциях"""
     new_list = []
     for name in bank_info:
@@ -20,3 +21,13 @@ def filter_by_state(bank_info: List[Dict], state: Tuple[str,...] =("EXECUTED",))
 modified_list = filter_by_state(bank_operations, state=("EXECUTED", "CANCELED"))
 
 print(modified_list)
+
+
+def sort_by_date(bank_info: List[Dict], sorting: bool = True) -> List[Dict]:
+    """ "Функция сортировки списка по дате из словарей"""
+    return sorted(bank_info, key=lambda x: x["date"], reverse=sorting)
+
+
+sorted_list = sort_by_date(bank_operations)
+
+print(sorted_list)
